@@ -20,8 +20,11 @@ class Todo
   end
 
   def to_displayable_string
-    "[#{(@completed) ? "X" : " "}] #{@text} #{(@due_date != Date.today) ? @due_date : ""}"
+    display_status = completed ? "[X]" : "[ ]"
+    display_date = due_today? ? nil : due_date
+    "#{display_status} #{todo_text} #{display_date}"
   end
+
 end
 
 class TodosList
